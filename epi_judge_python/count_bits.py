@@ -2,8 +2,14 @@ from test_framework import generic_test
 
 
 def count_bits(x: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    # O(k) (number of bits set)
+    num_bits = 0
+    while x:
+        # trampa loca unset lowest set bit
+        num_bits += 1
+        x &= x - 1 # remove last set bit
+    return num_bits;
+
 
 
 if __name__ == '__main__':
