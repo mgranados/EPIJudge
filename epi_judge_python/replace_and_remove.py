@@ -6,8 +6,33 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def replace_and_remove(size: int, s: List[str]) -> int:
-    # TODO - you fill in here.
-    return 0
+    # -> look for total_b and remove
+    num_b = 0
+    num_a = 0
+    for i in range(size):
+        if s[i] == 'a':
+            num_a += 1
+
+        if s[i] == 'b':
+            num_b += 1
+            s[i] = ''
+
+        elif num_b > 0:
+           # swap
+            s[i - num_b], s[i] = s[i], ''
+            
+    # -> send (num of a to right) look for a and insert dd
+    final = size - num_b + num_a
+
+    for j in reversed(range(size - num_b)):
+        if s[j] == 'a':
+            # send num a to right but 'd'
+            s[j + num_a], s[j + num_a -1], = 'd', 'd'
+            num_a -= 1
+        else:
+            s[j + num_a], s[j] = s[j], s[j + num_a]
+
+    return final
 
 
 @enable_executor_hook
