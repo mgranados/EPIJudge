@@ -6,8 +6,28 @@ from test_framework import generic_test
 
 def reverse_sublist(L: ListNode, start: int,
                     finish: int) -> Optional[ListNode]:
-    # TODO - you fill in here.
-    return None
+    # get a sublist
+    # get subhead of the reversing list
+    # dummy head
+    dummy_head = subhead = ListNode(0, L)
+    # algoritmo volteo
+    for _ in range(start - 1):
+        subhead = subhead.next
+
+    # ese iter es el inicio y siempre se ira al final
+    sublist_iterator = subhead.next
+    # un iter al inicio
+    for _ in range(finish - start):
+        temp = sublist_iterator.next
+        # un temp despues de ese iter
+        sublist_iterator.next = temp.next
+        temp.next = subhead.next
+        subhead.next = temp
+
+    return dummy_head.next
+
+
+
 
 
 if __name__ == '__main__':
