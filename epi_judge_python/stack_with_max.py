@@ -1,23 +1,28 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
-
+import math
 
 class Stack:
+    def __init__(self):
+        self.nodes = []
+        
     def empty(self) -> bool:
-        # TODO - you fill in here.
-        return True
+        return len(self.nodes) == 0
 
     def max(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        max = -math.inf
+        for node in self.nodes:
+            if node > max:
+                max = node
+
+        return max
 
     def pop(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        return self.nodes.pop()
 
     def push(self, x: int) -> None:
-        # TODO - you fill in here.
-        return
+        self.nodes.append(x)
+        return None
 
 
 def stack_tester(ops):
