@@ -2,14 +2,15 @@ from test_framework import generic_test
 
 
 def parity(x: int) -> int:
-    x ^= x >> 32
-    x ^= x >> 16
-    x ^= x >> 8
-    x ^= x >> 4
-    x ^= x >> 2
-    x ^= x >> 1
+    # ^ XOR gives parity of bits
+    x ^= x >> 32 # compare with half 
+    x ^= x >> 16 # compare with half 
+    x ^= x >> 8 # compare with half 
+    x ^= x >> 4 # compare with half 
+    x ^= x >> 2 # compare with half 
+    x ^= x >> 1 # compare with half 
+    return x & 0x1 # mask only lowest bit
 
-    return x & 1 # to just get latest bit
 
 
 if __name__ == '__main__':
