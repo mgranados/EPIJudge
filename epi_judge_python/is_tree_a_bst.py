@@ -1,10 +1,17 @@
 from binary_tree_node import BinaryTreeNode
 from test_framework import generic_test
-
+import math
 
 def is_binary_tree_bst(tree: BinaryTreeNode) -> bool:
-    # TODO - you fill in here.
-    return True
+    def in_range(tree, low=-math.inf, high=math.inf):
+        if not tree:
+            return True
+        elif not low <= tree.data <= high:
+            return False
+        return in_range(tree.left, low, tree.data) and in_range(tree.right,
+                                                                tree.data,
+                                                                high)
+    return in_range(tree)
 
 
 if __name__ == '__main__':
