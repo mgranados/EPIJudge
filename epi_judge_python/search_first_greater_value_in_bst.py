@@ -5,8 +5,31 @@ from test_framework import generic_test
 
 
 def find_first_greater_than_k(tree: BstNode, k: int) -> Optional[BstNode]:
-    # TODO - you fill in here.
-    return None
+    # Binary Search O(logN)
+    # Return first key which is greater than k
+    # In-order left, process, right
+    # O(n) space O(h)
+    #   while tree:
+    #    found_left = find_first_greater_than_k(tree.left, k)
+    #    if found_left:
+    #        return found_left 
+    #    elif tree.data > k:
+    #        return tree
+    #    else:
+    #        return find_first_greater_than_k(tree.right, k)
+    #return None
+
+    # O(logN) space O(1)
+    actual = tree 
+    first = None
+    while actual:
+        if actual.data > k:
+            first = actual
+            actual = actual.left
+        else:
+            actual = actual.right
+    return first
+
 
 
 def find_first_greater_than_k_wrapper(tree, k):
