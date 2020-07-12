@@ -3,10 +3,22 @@ from typing import List
 from bst_node import BstNode
 from test_framework import generic_test, test_utils
 
-
 def find_k_largest_in_bst(tree: BstNode, k: int) -> List[int]:
-    # TODO - you fill in here.
-    return []
+    largest = []
+    def aux_largest(node):
+        if node:
+            aux_largest(node.right)
+            if len(largest) < k:
+                largest.append(node.data)
+            else:
+                return
+            aux_largest(node.left)
+        else:
+            return
+        
+    aux_largest(tree)
+
+    return largest
 
 
 if __name__ == '__main__':
