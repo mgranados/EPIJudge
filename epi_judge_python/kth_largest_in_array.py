@@ -3,33 +3,42 @@ from typing import List
 from test_framework import generic_test
 import random
 
-# The numbering starts from one, i.e., if A = [3, 1, -1, 2]
-# find_kth_largest(1, A) returns 3, find_kth_largest(2, A) returns 2,
-# find_kth_largest(3, A) returns 1, and find_kth_largest(4, A) returns -1.
 def find_kth_largest(k: int, A: List[int]) -> int:
-    def partition(left, right, pivot):
+    def in_place(left, right, pivot):
         pivot_value = A[pivot]
-        new_pivot = left
-        A[pivot], A[right] = A[right], A[pivot]
+        # let pivot wait to the right
+        A[right], A[pivot] = A[pivot], A[right]
+        new_pivot_idx = left
         for i in range(left, right):
+            # Only for value bigger, if pivot is the biggest, nothing happens
             if A[i] > pivot_value:
-                A[i], A[new_pivot] = A[new_pivot], A[i]
-                new_pivot += 1
-        A[right], A[new_pivot] = A[new_pivot], A[right]
-        return new_pivot
+                # If we see a value bigger we send it as left as possible
+                # new_pivot_idx
+                A[new_pivot_idx], A[i] = A[i], A[new_pivot_idx]
+                # set the new pivot + 1
+                new_pivot_idx +=1
+        # once all bigger are in place
+        # switch with np the right (original pivot)
+        # if pivot was the biggest we simply place it to the left
+        A[new_pivot_idx], A[right] = A[right], A[new_pivot_idx]
+        return new_pivot_idx
 
     left, right = 0, len(A) - 1
     while left <= right:
-        # Random pivot
+        # Pick a random pivot
         pivot = random.randint(left, right)
-        # pivot around 
-        new = partition(left, right, pivot)
-        if new == k - 1:
-            return A[new]
-        elif new > k -1:
-            right = new - 1
+        new_pivot = in_place(left, right, pivot)
+        # new pivot around 
+        if new_pivot == k - 1:
+            return A[new_pivot]
+        elif new_pivot > k -1:
+            # there are more bigger numbers
+            # cut the right (smaller numbers)
+            right = new_pivot - 1
         else:
-            left = new + 1
+            # there are more smaller numbers [3, →2, 1, -2] k = 3(-1) > (np = 1)
+            # cut the left (bigger numbers)
+            left = new_pivot + 1
 
 
 
