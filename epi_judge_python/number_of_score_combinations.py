@@ -5,7 +5,9 @@ from test_framework import generic_test
 
 def num_combinations_for_final_score(final_score: int,
                                      individual_play_scores: List[int]) -> int:
-    # TODO - you fill in here.
+    # receive list ints
+    # a score
+    # try to get as many as possible
     return 0
 
 
