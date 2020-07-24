@@ -14,8 +14,40 @@ Coordinate = collections.namedtuple('Coordinate', ('x', 'y'))
 
 def search_maze(maze: List[List[int]], s: Coordinate,
                 e: Coordinate) -> List[Coordinate]:
-    # TODO - you fill in here.
-    return []
+
+    result_path = []
+
+    def do_dfs(current):
+        if current.x < 0 or current.y < 0 or current.x >= len(maze) or current.y >= len(maze[current.x]) or maze[current.x][current.y] == BLACK:
+            return False
+
+        result_path.append(current)
+        maze[current.x][current.y] = BLACK
+
+        if current == e:
+            return True
+
+        up = Coordinate(current.x, current.y+1)
+        if do_dfs(up):
+            return True
+        right = Coordinate(current.x + 1, current.y)
+        if do_dfs(right):
+            return True
+        down = Coordinate(current.x - 1, current.y)
+        if do_dfs(down):
+            return True
+        left = Coordinate(current.x, current.y -1)
+        if do_dfs(left):
+            return True
+
+        del result_path[-1] # LITERAL BACKTRACKING
+        return False
+            
+
+    do_dfs(s)
+
+
+    return result_path
 
 
 def path_element_is_feasible(maze, prev, cur):

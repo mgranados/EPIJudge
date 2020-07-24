@@ -4,6 +4,7 @@ from typing import List
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
+import collections
 
 MPG = 20
 
@@ -11,8 +12,15 @@ MPG = 20
 # gallons[i] is the amount of gas in city i, and distances[i] is the
 # distance city i to the next city.
 def find_ample_city(gallons: List[int], distances: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+    remaining_gallons = 0
+    CityAndGas = collections.namedtuple('CityAndGas', ('city', 'remaining_gas'))
+    cities_remaining = CityAndGas(0,0)
+    for i in range(1, len(gallons)):
+        remaining_gallons += gallons[i - 1] - distances[i - 1] // MPG
+        if remaining_gallons < cities_remaining.remaining_gas:
+            cities_remaining = CityAndGas(i, remaining_gallons)
+
+    return cities_remaining.city
 
 
 @enable_executor_hook
