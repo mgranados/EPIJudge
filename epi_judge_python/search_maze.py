@@ -18,7 +18,10 @@ def search_maze(maze: List[List[int]], s: Coordinate,
     result_path = []
 
     def do_dfs(current):
-        if current.x < 0 or current.y < 0 or current.x >= len(maze) or current.y >= len(maze[current.x]) or maze[current.x][current.y] == BLACK:
+        if current.x < 0 or current.y < 0:
+            return False
+
+        if current.x >= len(maze) or current.y >= len(maze[current.x]) or maze[current.x][current.y] == BLACK:
             return False
 
         result_path.append(current)
