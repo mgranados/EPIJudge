@@ -2,7 +2,24 @@ from test_framework import generic_test
 
 
 def can_form_palindrome(s: str) -> bool:
-    # TODO - you fill in here.
+    char_count = {}
+    for char in s:
+        if not char in char_count:
+            char_count[char] = 1
+        else:
+            char_count[char] += 1
+
+    odd = 0
+    even = 0
+    for counted in char_count.values():
+        if counted % 2 == 0:
+            even += 1
+        else:
+            odd += 1
+
+    if odd > 1:
+        return False
+
     return True
 
 
