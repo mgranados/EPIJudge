@@ -4,18 +4,17 @@ from test_framework import generic_test
 import math
 
 def find_nearest_repetition(paragraph: List[str]) -> int:
-    # traverse O(n)
-    # space O(d) distinct entries
-    last_idx = {}
-    min_dist = math.inf
-    for idx, word in enumerate(paragraph):
-        if word in last_idx:
-            if idx - last_idx[word] < min_dist:
-                min_dist = idx - last_idx[word] 
-        last_idx[word] = idx
-        
+    min_dist = math.inf;
+    counts = {}
+    for index, char in enumerate(paragraph):
+        if char in counts:
+            curr_dist = index - counts[char]
+            min_dist = curr_dist if curr_dist < min_dist else min_dist
+            counts[char] = index
+        else:
+            counts[char] = index
 
-    return min_dist if min_dist != math.inf else -1
+    return -1 if min_dist == math.inf else min_dist
 
 
 if __name__ == '__main__':
