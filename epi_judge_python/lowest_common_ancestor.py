@@ -10,7 +10,16 @@ from test_framework.test_utils import enable_executor_hook
 
 def lca(tree: BinaryTreeNode, node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-    # TODO - you fill in here.
+    # traverse from root
+    node = tree
+    while tree:
+        if node >= node0.data and node <= node1.data:
+            return node
+        if node < node0.data:
+            node = node.left
+        if node > node0.data:
+            node = node.right
+    
     return None
 
 
