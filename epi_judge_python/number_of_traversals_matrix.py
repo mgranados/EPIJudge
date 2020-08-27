@@ -1,10 +1,17 @@
 from test_framework import generic_test
+from functools import lru_cache
 
+@lru_cache()
+def traverse_matrix(x, y):
+    if x == 0 or y == 0:
+        return 1
+
+    up = traverse_matrix(x, y - 1)
+    down = traverse_matrix(x - 1, y)
+    return up + down
 
 def number_of_ways(n: int, m: int) -> int:
-    # TODO - you fill in here.
-    return 0
-
+    return traverse_matrix(n - 1, m - 1)
 
 if __name__ == '__main__':
     exit(
