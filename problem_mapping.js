@@ -980,7 +980,7 @@ problem_mapping = {
                 "total": 65
             },
             "Python: queue_from_stacks.py": {
-                "passed": 0,
+                "passed": 65,
                 "total": 65
             }
         },
@@ -1136,7 +1136,7 @@ problem_mapping = {
                 "total": 3852
             },
             "Python: tree_with_parent_inorder.py": {
-                "passed": 0,
+                "passed": 3852,
                 "total": 3852
             }
         },
@@ -1278,7 +1278,7 @@ problem_mapping = {
                 "total": 55
             },
             "Python: online_median.py": {
-                "passed": 0,
+                "passed": 55,
                 "total": 55
             }
         },
@@ -1364,7 +1364,7 @@ problem_mapping = {
                 "total": 11003
             },
             "Python: real_square_root.py": {
-                "passed": 0,
+                "passed": 11003,
                 "total": 11003
             }
         },
