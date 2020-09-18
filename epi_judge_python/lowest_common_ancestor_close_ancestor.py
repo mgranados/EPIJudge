@@ -10,7 +10,21 @@ from test_framework.test_utils import enable_executor_hook
 
 def lca(node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-    # TODO - you fill in here.
+    copy0 = node0
+    copy1 = node1
+
+    seen = set()
+    while copy0 or copy1:
+        if copy0:
+            if copy0 in seen:
+                return copy0
+            seen.add(copy0)
+            copy0 = copy0.parent
+        if copy1:
+            if copy1 in seen:
+                return copy1
+            seen.add(copy1)
+            copy1 = copy1.parent
     return None
 
 
