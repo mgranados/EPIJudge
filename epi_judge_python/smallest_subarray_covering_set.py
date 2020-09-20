@@ -11,8 +11,22 @@ Subarray = collections.namedtuple('Subarray', ('start', 'end'))
 
 def find_smallest_subarray_covering_set(paragraph: List[str],
                                         keywords: Set[str]) -> Subarray:
-    # TODO - you fill in here.
-    return Subarray(0, 0)
+    window = {} # iter 
+    result = Subarray(start=-1, end=-1)
+
+    for keyword in keywords:
+        window[keyword] = -1
+
+    for key,value in enumerate(paragraph):
+        if value in keywords:
+            window[value] = key  
+            minimal = min(window.values())
+            maximum = max(window.values())
+
+            if (result.end == -1 or result.start == -1) or (result.end - result.start) > (maximum - minimal):
+                result = Subarray(start = minimal, end = maximum)
+
+    return result
 
 
 @enable_executor_hook
