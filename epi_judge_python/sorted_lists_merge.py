@@ -13,7 +13,6 @@ def merge_two_sorted_lists(L1: Optional[ListNode],
         return L2
     if not L2 and not L1:
         return None
-    
     if L1.data < L2.data:
         head = L1
         tail = ListNode(0, head)
