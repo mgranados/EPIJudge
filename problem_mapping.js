@@ -1760,7 +1760,7 @@ problem_mapping = {
                 "total": 209
             },
             "Python: sort_list.py": {
-                "passed": 0,
+                "passed": 209,
                 "total": 209
             }
         },
@@ -1860,7 +1860,7 @@ problem_mapping = {
                 "total": 950
             },
             "Python: bst_from_preorder.py": {
-                "passed": 0,
+                "passed": 950,
                 "total": 950
             }
         },
@@ -1902,7 +1902,7 @@ problem_mapping = {
                 "total": 87
             },
             "Python: bst_from_sorted_array.py": {
-                "passed": 0,
+                "passed": 87,
                 "total": 87
             }
         },
