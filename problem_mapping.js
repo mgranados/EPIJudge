@@ -1718,7 +1718,7 @@ problem_mapping = {
                 "total": 191
             },
             "Python: intervals_union.py": {
-                "passed": 0,
+                "passed": 191,
                 "total": 191
             }
         },
@@ -2030,7 +2030,7 @@ problem_mapping = {
                 "total": 15
             },
             "Python: power_set.py": {
-                "passed": 0,
+                "passed": 15,
                 "total": 15
             }
         },
