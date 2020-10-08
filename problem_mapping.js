@@ -2212,7 +2212,7 @@ problem_mapping = {
                 "total": 186
             },
             "Python: is_string_in_matrix.py": {
-                "passed": 0,
+                "passed": 186,
                 "total": 186
             }
         },
@@ -2436,7 +2436,7 @@ problem_mapping = {
                 "total": 204
             },
             "Python: max_trapped_water.py": {
-                "passed": 0,
+                "passed": 204,
                 "total": 204
             }
         },
