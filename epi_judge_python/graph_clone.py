@@ -1,5 +1,6 @@
 import collections
 from typing import List
+from collections import deque
 
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
@@ -12,8 +13,25 @@ class GraphVertex:
 
 
 def clone_graph(graph: GraphVertex) -> GraphVertex:
-    # TODO - you fill in here.
-    return GraphVertex(0)
+    if not graph:
+        return None
+
+    q = deque([graph])
+    new_graph = {
+        graph: GraphVertex(graph.label) # evaluates actual key
+    }
+
+    while q:
+        graph_node = q.popleft()
+        for vertex in graph_node.edges:
+            # bfs
+            if vertex not in new_graph:
+                new_graph[vertex] = GraphVertex(vertex.label)
+                q.append(vertex)
+            # Created node has no edges so we add them
+            new_graph[graph_node].edges.append(new_graph[vertex])
+
+    return new_graph[graph]
 
 
 def copy_labels(edges):
