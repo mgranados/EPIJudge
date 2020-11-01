@@ -13,7 +13,7 @@ class GraphVertex:
 
 
 def find_largest_number_teams(graph: List[GraphVertex]) -> int:
-    # TODO - you fill in here.
+
     return 0
 
 
