@@ -4,10 +4,15 @@ from typing import List
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
+class Color(Enum):
+    white = 0
+    gray = 1
+    black = 2
 
 class GraphVertex:
     def __init__(self) -> None:
         self.edges: List['GraphVertex'] = []
+        self.color = Color.white
 
 
 def is_deadlocked(graph: List[GraphVertex]) -> bool:

@@ -588,7 +588,7 @@ problem_mapping = {
                 "total": 3999
             },
             "Python: roman_to_integer.py": {
-                "passed": 0,
+                "passed": 3999,
                 "total": 3999
             }
         },
@@ -2564,7 +2564,7 @@ problem_mapping = {
                 "total": 69
             },
             "Python: max_teams_in_photograph.py": {
-                "passed": 0,
+                "passed": 69,
                 "total": 69
             }
         }
