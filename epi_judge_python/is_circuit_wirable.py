@@ -12,7 +12,9 @@ class GraphVertex:
 
 
 def is_any_placement_feasible(graph: List[GraphVertex]) -> bool:
-    # TODO - you fill in here.
+    for node in graph:
+        print(node.d)
+
     return True
 
 
