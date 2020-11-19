@@ -9,7 +9,24 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def solve_sudoku(partial_assignment: List[List[int]]) -> bool:
-    # TODO - you fill in here.
+    # solve_sudoku with somenumber assigned
+    for i in range(len(partial_assignment)):
+        for j in range(len(partial_assignment[0])):
+            for k in range(9):
+                if partial_assignment[i][j] == 0:
+                    # check col [x][j ==]
+                    for x in range(len(partial_assignment)):
+                        if partial_assignment[x][j] == k:
+                            return False
+                    # check row
+                    for y in range(len(partial_assignment[0])):
+                        if partial_assignment[i][y] == k:
+                            return False
+                    # check in square
+                    partial_assignment[i][j] = k
+
+    print(partial_assignment)
+
     return True
 
 
