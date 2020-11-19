@@ -1,5 +1,6 @@
 import functools
 from typing import List
+import random
 
 from test_framework import generic_test
 from test_framework.random_sequence_checker import (
@@ -9,8 +10,18 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def random_subset(n: int, k: int) -> List[int]:
-    # TODO - you fill in here.
-    return []
+    changed = {}
+    for i in range(k):
+        rand_idx = random.randrange(i, n)
+
+        rand_idx_map = changed.get(rand_idx, rand_idx)
+        i_map = changed.get(i,i)
+
+        changed[rand_idx] = i_map
+        changed[i] = rand_idx_map
+
+    return [changed[i] for i in range(k)]
+
 
 
 @enable_executor_hook
