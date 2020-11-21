@@ -2,9 +2,32 @@ from test_framework import generic_test
 
 
 def shortest_equivalent_path(path: str) -> str:
-    # TODO - you fill in here.
-    return ''
+    if not path:
+        return ''
 
+    stack = []
+    if path[0] == '/':
+        stack.append('/')
+
+    folders = path.split('/')
+    for directory in folders:
+
+        if not directory or directory == '.':
+            continue
+
+        if directory == '..':
+            if not stack or stack[-1] == '..':
+                stack.append(directory)
+            else:
+                stack.pop()
+
+        else:
+            stack.append(directory)
+    result = '/'.join(stack)
+
+    if result.startswith('//'):
+         return result[1:]
+    return result
 
 if __name__ == '__main__':
     exit(
